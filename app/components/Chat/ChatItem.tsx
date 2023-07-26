@@ -2,11 +2,10 @@
 
 import styles from './chat.module.css'
 
-export const ChatItem = ({ message: Message = {} }) => {
-
+export const ChatItem = ({message} : {message:Message}) => {
     return (
-        <div>
-            <p>{Message.chat}</p>
+        <div className={styles.message}>
+            <p>{message.chat}</p>
         </div>
     )
 }

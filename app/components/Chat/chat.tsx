@@ -1,22 +1,14 @@
 'use client'
-
-/* Core */
-import { useState } from 'react'
-
-/* Instruments */
-import {
-  chatSlice,
-  useSelector,
-  useDispatch,
-} from '@/lib/redux'
-import styles from './chat.module.css'
+import { ChatForm } from './ChatForm'
+import { ChatList } from './ChatList'
 
 export const Chat = () => {
-  const dispatch = useDispatch()
+
 
   return (
     <div>
-    
+      <ChatList />
+      <ChatForm />
     </div>
   )
 }

@@ -1,21 +1,28 @@
 'use client'
 
 /* Core */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 /* Instruments */
 import {
-    chatSlice,
     useSelector,
     useDispatch,
+    selectChats,
+    loadChatAsync,
 } from '@/lib/redux'
 import styles from './chat.module.css'
+import { ChatItem } from './ChatItem'
 
 export const ChatList = () => {
     const dispatch = useDispatch()
+    const chats = useSelector(selectChats)
+    // console.log(chats)
+    useEffect(() => {
+        dispatch(loadChatAsync())
+    }, [])
     return (
-        <div>
-            
+        <div className={styles.list}>
+            {chats.map(item => <ChatItem key={item.id} message={item} />)}
         </div>
     )
 }

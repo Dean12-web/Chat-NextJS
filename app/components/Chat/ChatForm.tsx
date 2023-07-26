@@ -1,21 +1,27 @@
 'use client'
 
 /* Core */
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 /* Instruments */
 import {
-    chatSlice,
-    useSelector,
-    useDispatch,
+    useDispatch, 
+    addChat
 } from '@/lib/redux'
 import styles from './chat.module.css'
 
 export const ChatForm = () => {
     const dispatch = useDispatch()
-    return (
-        <div>
-            
-        </div>
+    const [chat, setChat] = useState("")
+    const sendChat = useCallback((e: any) => {
+        e.preventDefault()
+        dispatch(addChat(chat))
+        setChat("")
+    }, [chat])
+    return ( 
+        <form onSubmit={sendChat}>
+            <input type="text" name="chat" onChange={e => setChat(e.target.value)} />
+            <button type="submit">Send</button>
+        </form>
     )
 }
