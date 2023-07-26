@@ -2,7 +2,7 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
 /* Instruments */
-import { incrementAsync } from './thunks'
+import { loadChatAsync, addChatAsync } from './thunks'
 
 const initialState: ChatSliceState = {
   value: [],
@@ -19,10 +19,10 @@ export const chatSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(incrementAsync.pending, (state) => {
+      .addCase(loadChatAsync.pending, (state) => {
         state.status = 'loading'
       })
-      .addCase(incrementAsync.fulfilled, (state, action) => {
+      .addCase(loadChatAsync.fulfilled, (state, action) => {
         state.status = 'idle'
         // state.value +=  action.payload
       })

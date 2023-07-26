@@ -1,12 +1,10 @@
-import {request} from "../../../api"
-export const getChat = async (
-  amount = 1
-): Promise<{ data: number }> => {
-  const response = await fetch('http://localhost:3000/api/identity-count', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ amount }),
-  })
-  const result = await response.json()
-  return result
+import { request } from "../../../api"
+export const fetchLoadChat = async () => {
+  const data = await request.get('/chat')
+  return data
+}
+
+export const fetchAddChat = async (message: Message) => {
+  const { data } = await request.post('/chat', message)
+  return data
 }

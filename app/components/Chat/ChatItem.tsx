@@ -1,27 +1,12 @@
 'use client'
 
-/* Core */
-import { useState } from 'react'
+import styles from './chat.module.css'
 
-/* Instruments */
-import {
-    counterSlice,
-    useSelector,
-    useDispatch,
-    selectCount,
-    incrementAsync,
-    incrementIfOddAsync,
-} from '@/lib/redux'
-import styles from './counter.module.css'
-
-export const Counter = () => {
-    const dispatch = useDispatch()
-    const count = useSelector(selectCount)
-    const [incrementAmount, setIncrementAmount] = useState(2)
+export const ChatItem = ({ message: Message = {} }) => {
 
     return (
         <div>
-            
+            <p>{Message.chat}</p>
         </div>
     )
 }
